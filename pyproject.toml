@@ -1,0 +1,74 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hallo3"
+version = "0.1.0"
+description = "Hallo3: Highly Dynamic and Realistic Portrait Image Animation with Diffusion Transformer Networks"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.0",
+    "torchvision",
+    "SwissArmyTransformer==0.4.12",
+    "deepspeed==0.14.4",
+    "transformers==4.45.2",
+    "pytorch-lightning==2.3.3",
+    "omegaconf==2.3.0",
+    "numpy==1.26.4",
+    "einops",
+    "kornia",
+    "scipy",
+    "scikit-image",
+    "Pillow",
+    "opencv-python",
+    "imageio",
+    "imageio-ffmpeg",
+    "moviepy==1.0.3",
+    "av",
+    "decord",
+    "librosa",
+    "soundfile",
+    "audio-separator",
+    "mediapipe==0.10.14",
+    "insightface==0.7.3",
+    "onnxruntime-gpu",
+    "onnx2torch",
+    "safetensors",
+    "sentencepiece",
+    "beartype",
+    "icecream",
+    "webdataset",
+    "fsspec",
+    "matplotlib",
+    "requests",
+    "tqdm",
+    "packaging",
+    "rotary-embedding-torch",
+    "gateloop-transformer",
+    "magvit2-pytorch",
+    "taylor-series-linear-attention",
+    "gradio",
+]
+
+# The upstream code under hallo3/ uses flat imports (e.g. `from diffusion_video
+# import ...`, `from sgm.utils import ...`), so the inner hallo3/ directory is
+# the import root: its modules + sgm/vae_modules packages install at top level.
+[tool.setuptools]
+package-dir = {"" = "hallo3"}
+py-modules = [
+    "arguments",
+    "data_video",
+    "data_preprocess",
+    "diffusion_video",
+    "dit_video_concat",
+    "ref_dit_video_concat",
+    "sample_video",
+    "train_video",
+    "extract_meta_info",
+    "app",
+]
+
+[tool.setuptools.packages.find]
+where = ["hallo3"]
+include = ["sgm*", "vae_modules*"]
