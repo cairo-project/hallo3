@@ -54,6 +54,9 @@ dependencies = [
 # The upstream code under hallo3/ uses flat imports (e.g. `from diffusion_video
 # import ...`, `from sgm.utils import ...`), so the inner hallo3/ directory is
 # the import root: its modules + sgm/vae_modules packages install at top level.
+[project.scripts]
+generate-hallo3 = "generate_hallo3:main"
+
 [tool.setuptools]
 package-dir = {"" = "hallo3"}
 py-modules = [
@@ -67,6 +70,7 @@ py-modules = [
     "train_video",
     "extract_meta_info",
     "app",
+    "generate_hallo3",
 ]
 
 [tool.setuptools.packages.find]
